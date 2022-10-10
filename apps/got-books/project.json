@@ -1,0 +1,84 @@
+{
+  "name": "got-books",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/got-books/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/got-books",
+        "index": "apps/got-books/src/index.html",
+        "baseHref": "/",
+        "main": "apps/got-books/src/main.tsx",
+        "polyfills": "apps/got-books/src/polyfills.ts",
+        "tsConfig": "apps/got-books/tsconfig.app.json",
+        "assets": [
+          "apps/got-books/src/favicon.ico",
+          "apps/got-books/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/got-books/src/environments/environment.ts",
+              "with": "apps/got-books/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "got-books:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "got-books:build:development"
+        },
+        "production": {
+          "buildTarget": "got-books:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/got-books/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/got-books"],
+      "options": {
+        "jestConfig": "apps/got-books/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
