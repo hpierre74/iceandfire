@@ -1,15 +1,33 @@
-import styled from '@emotion/styled';
-import NxWelcome from './nx-welcome';
+import { useEffect } from 'react';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { Layout, Loading, PageTitle } from '@iceandfire/components';
+import { useAppDispatch, useAppSelector } from '@iceandfire/hooks';
+import {
+  fetchBooks,
+  selectAllBooks,
+  selectBooksStatus,
+} from '@iceandfire/books-logic';
+import { BooksList } from '@iceandfire/books-components';
 
+// For this simple "route-less" app, <App /> is equivalent to a Home page
 export function App() {
+  const dispatch = useAppDispatch();
+  const books = useAppSelector(selectAllBooks);
+  const loadingStatus = useAppSelector(selectBooksStatus);
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  if (loadingStatus === 'loading' || loadingStatus === 'not loaded') {
+    return <Loading />;
+  }
+
   return (
-    <StyledApp>
-      <NxWelcome title="got-books" />
-    </StyledApp>
+    <Layout>
+      <PageTitle>All books</PageTitle>
+      <BooksList books={books} />
+    </Layout>
   );
 }
 

@@ -14,7 +14,21 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@iceandfire/components": ["libs/components/src/index.ts"],
+      "@iceandfire/hooks": ["libs/hooks/src/index.ts"],
+      "@iceandfire/books-components": [
+        "libs/modules/books/components/src/index.ts"
+      ],
+      "@iceandfire/books-logic": ["libs/modules/books/logic/src/index.ts"],
+      "@iceandfire/characters-components": [
+        "libs/modules/characters/components/src/index.ts"
+      ],
+      "@iceandfire/characters-logic": [
+        "libs/modules/characters/logic/src/index.ts"
+      ],
+      "@iceandfire/store": ["libs/store/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

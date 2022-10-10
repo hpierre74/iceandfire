@@ -1,0 +1,26 @@
+{
+  "name": "modules-characters-components",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/characters/components/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/modules/characters/components/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/modules/characters/components"],
+      "options": {
+        "jestConfig": "libs/modules/characters/components/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

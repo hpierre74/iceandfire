@@ -1,0 +1,24 @@
+{
+  "name": "modules-books-logic",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/books/logic/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/modules/books/logic/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/modules/books/logic"],
+      "options": {
+        "jestConfig": "libs/modules/books/logic/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "modules-characters-logic",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/characters/logic/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/modules/characters/logic/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/modules/characters/logic"],
+      "options": {
+        "jestConfig": "libs/modules/characters/logic/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
